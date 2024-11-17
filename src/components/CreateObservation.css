@@ -1,0 +1,81 @@
+/* För containern som omger hela formuläret */
+.create-observation {
+    background-color: #fff7e6; /* Ljusgul bakgrund */
+    border: 1px solid #ffdd99;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Rubriken */
+  .create-observation h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #cc8800;
+    text-align: center;
+  }
+  
+  /* Formuläret */
+  .create-observation form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Etiketter (label) */
+  .create-observation label {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    color: #996600;
+  }
+  
+  /* Textfält och textarea */
+  .create-observation textarea,
+  .create-observation input[type="text"] {
+    font-size: 1rem;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ffcc66;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* Textarea */
+  .create-observation textarea {
+    resize: vertical;
+    height: 100px;
+  }
+  
+  /* Submit-knapp */
+  .create-observation button {
+    font-size: 1rem;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #cc8800;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Hover-effekt på knappen */
+  .create-observation button:hover {
+    background-color: #a36600;
+  }
+  
+  /* Meddelanden */
+  .create-observation .message {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    text-align: center;
+    color: #28a745;
+  }
+  
+  /* Felmeddelanden */
+  .create-observation .error-message {
+    color: #dc3545;
+  }
+  

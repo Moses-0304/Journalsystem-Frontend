@@ -1,0 +1,75 @@
+/* För containern som omger hela formuläret */
+.create-condition {
+    background-color: #f0f9ff; /* Ljusblå bakgrund */
+    border: 1px solid #cce7ff;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Rubriken */
+  .create-condition h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #0056b3;
+    text-align: center;
+  }
+  
+  /* Formuläret */
+  .create-condition form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Etiketter (label) */
+  .create-condition label {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    color: #004085;
+  }
+  
+  /* Textfält och select */
+  .create-condition input[type="text"],
+  .create-condition select {
+    font-size: 1rem;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #99d1ff;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* Submit-knapp */
+  .create-condition button {
+    font-size: 1rem;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #0056b3;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Hover-effekt på knappen */
+  .create-condition button:hover {
+    background-color: #003f8a;
+  }
+  
+  /* Meddelanden */
+  .create-condition .message {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    text-align: center;
+    color: #28a745;
+  }
+  
+  /* Felmeddelanden */
+  .create-condition .error-message {
+    color: #dc3545;
+  }
+  
