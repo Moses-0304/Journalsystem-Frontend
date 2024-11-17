@@ -7,6 +7,9 @@ const Register = () => {
     username: '',
     password: '',
     role: 'PATIENT',
+    name: '', // Extra fält för patientnamn
+    birthDate: '', // Extra fält för födelsedatum
+    contactInfo: '', // Extra fält för kontaktinfo
   });
   const [message, setMessage] = useState('');
 
@@ -24,7 +27,6 @@ const Register = () => {
       setMessage(`Error: ${error.response?.data || 'Registration failed'}`);
     }
   };
-  
 
   return (
     <div className="container">
@@ -66,6 +68,43 @@ const Register = () => {
               <option value="STAFF">Staff</option>
             </select>
           </div>
+          {/* Visa extra fält endast för patienter */}
+          {formData.role === 'PATIENT' && (
+            <>
+              <div>
+                <label>Name:</label>
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder="Enter patient name"
+                  required
+                />
+              </div>
+              <div>
+                <label>Birth Date:</label>
+                <input
+                  type="date"
+                  name="birthDate"
+                  value={formData.birthDate}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div>
+                <label>Contact Info:</label>
+                <input
+                  type="text"
+                  name="contactInfo"
+                  value={formData.contactInfo}
+                  onChange={handleChange}
+                  placeholder="Enter contact info"
+                  required
+                />
+              </div>
+            </>
+          )}
           <button type="submit">Register</button>
         </form>
         {message && <p className="message">{message}</p>}
