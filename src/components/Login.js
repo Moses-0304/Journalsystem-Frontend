@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import api from '../services/api';
 import './Login.css';
 
 const Login = () => {
   const [formData, setFormData] = useState({ username: '', password: '' });
   const [message, setMessage] = useState('');
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -16,12 +17,33 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await api.post('/users/login', formData);
-      setMessage(`Login successful! Role: ${response.data.role}`); // Justera beroende på vad backend returnerar
+
+      console.log('Response from backend:', response.data);
+
+      // Om svaret är en textsträng, extrahera rollen
+      const role = response.data.includes('DOCTOR') ? 'DOCTOR' :
+                   response.data.includes('PATIENT') ? 'PATIENT' :
+                   response.data.includes('PRACTITIONER') ? 'PRACTITIONER' : null;
+
+      if (!role) {
+        setMessage('Login successful, but role is undefined!');
+        return;
+      }
+
+      // Lagra rollen i LocalStorage
+      localStorage.setItem('userRole', role);
+      localStorage.setItem('username', formData.username);
+
+      setMessage(`Login successful! Role: ${role}`);
+
+      // Navigera till rätt sida baserat på rollen
+      if (role === 'PATIENT') navigate('/patient');
+      else if (role === 'DOCTOR') navigate('/doctor');
+      else if (role === 'PRACTITIONER') navigate('/practitioner');
     } catch (error) {
       setMessage(`Error: ${error.response?.data || 'Login failed'}`);
     }
   };
-  
 
   return (
     <div className="container">
