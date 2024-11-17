@@ -23,7 +23,7 @@ const Login = () => {
       // Om svaret är en textsträng, extrahera rollen
       const role = response.data.includes('DOCTOR') ? 'DOCTOR' :
                    response.data.includes('PATIENT') ? 'PATIENT' :
-                   response.data.includes('PRACTITIONER') ? 'PRACTITIONER' : null;
+                   response.data.includes('STAFF') ? 'PRACTITIONER' : null;
 
       if (!role) {
         setMessage('Login successful, but role is undefined!');
