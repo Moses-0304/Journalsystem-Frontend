@@ -1,0 +1,10 @@
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: journalsystem_frontend1
+    ports:
+      - "3001:80"  # Extern port 3001 mappar till port 80 i containern (Nginx-standardport)
+    environment:
+      - REACT_APP_BACKEND_URL=http://localhost:8080  # Backend-URL, förutsatt att backend körs på localhost utanför denna container
