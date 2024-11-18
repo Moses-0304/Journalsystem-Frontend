@@ -7,6 +7,7 @@ import DoctorPage from './components/DoctorPage'; // Import DoctorPage component
 import PractitionerPage from './components/PractitionerPage'; // Import PractitionerPage component
 import CreateCondition from './components/CreateCondition'; // Import CreateCondition component
 import CreateObservation from './components/CreateObservation'; // Import CreateObservation component
+import MessagePage from './components/MessagePage'; // Import MessagePage component
 
 function App() {
   return (
@@ -24,6 +25,9 @@ function App() {
         {/* Funktioner för att skapa condition och observation */}
         <Route path="/create-condition" element={<CreateCondition />} />
         <Route path="/create-observation" element={<CreateObservation />} />
+
+        {/* Sidan för meddelanden */}
+        <Route path="/messages" element={<MessagePage />} />
       </Routes>
     </Router>
   );

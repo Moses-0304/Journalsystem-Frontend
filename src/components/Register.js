@@ -7,10 +7,11 @@ const Register = () => {
     username: '',
     password: '',
     role: 'PATIENT',
-    name: '', // Extra fält för patientnamn
-    birthDate: '', // Extra fält för födelsedatum
-    contactInfo: '', // Extra fält för kontaktinfo
+    patientName: '', // Uppdaterat för att matcha backend
+    patientBirthDate: '', // Uppdaterat för att matcha backend
+    patientContactInfo: '', // Uppdaterat för att matcha backend
   });
+
   const [message, setMessage] = useState('');
 
   const handleChange = (e) => {
@@ -20,10 +21,25 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Enkel validering innan skick
+    if (
+      !formData.username ||
+      !formData.password ||
+      (formData.role === 'PATIENT' &&
+        (!formData.patientName || !formData.patientBirthDate || !formData.patientContactInfo))
+    ) {
+      setMessage('All fields are required.');
+      return;
+    }
+
+    console.log('Data being sent to backend:', formData); // Debug-logg
+
     try {
       await api.post('/users/register', formData);
       setMessage('Registration successful!');
     } catch (error) {
+      console.error('Error registering user:', error.response?.data || error.message); // Debug-logg
       setMessage(`Error: ${error.response?.data || 'Registration failed'}`);
     }
   };
@@ -72,11 +88,11 @@ const Register = () => {
           {formData.role === 'PATIENT' && (
             <>
               <div>
-                <label>Name:</label>
+                <label>Patient Name:</label>
                 <input
                   type="text"
-                  name="name"
-                  value={formData.name}
+                  name="patientName"
+                  value={formData.patientName}
                   onChange={handleChange}
                   placeholder="Enter patient name"
                   required
@@ -86,8 +102,8 @@ const Register = () => {
                 <label>Birth Date:</label>
                 <input
                   type="date"
-                  name="birthDate"
-                  value={formData.birthDate}
+                  name="patientBirthDate"
+                  value={formData.patientBirthDate}
                   onChange={handleChange}
                   required
                 />
@@ -96,8 +112,8 @@ const Register = () => {
                 <label>Contact Info:</label>
                 <input
                   type="text"
-                  name="contactInfo"
-                  value={formData.contactInfo}
+                  name="patientContactInfo"
+                  value={formData.patientContactInfo}
                   onChange={handleChange}
                   placeholder="Enter contact info"
                   required

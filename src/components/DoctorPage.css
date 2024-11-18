@@ -1,0 +1,91 @@
+/* DoctorPage.css */
+.doctor-page {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+}
+
+.doctor-page h1 {
+    color: #004085;
+}
+
+.doctor-page .error-message {
+    color: #dc3545;
+    background-color: #f8d7da;
+    padding: 10px;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+.patient-list {
+    margin-top: 20px;
+}
+
+.patient-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.patient-list li {
+    margin-bottom: 10px;
+}
+
+.patient-list button {
+    font-size: 1rem;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.patient-list button:hover {
+    background-color: #0056b3;
+}
+
+.patient-details {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.patient-details h3 {
+    color: #004085;
+}
+
+.actions {
+    margin-top: 20px;
+}
+
+.actions button {
+    margin-right: 10px;
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.actions button:hover {
+    background-color: #218838;
+}
+
+.messages-button {
+    background-color: #17a2b8;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.messages-button:hover {
+    background-color: #138496;
+}
