@@ -7,6 +7,8 @@
 
 .doctor-page h1 {
     color: #004085;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
 }
 
 .doctor-page .error-message {
@@ -20,11 +22,16 @@
 
 .patient-list {
     margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: flex-start;
 }
 
 .patient-list ul {
     list-style-type: none;
     padding: 0;
+    margin: 0;
 }
 
 .patient-list li {
@@ -33,16 +40,19 @@
 
 .patient-list button {
     font-size: 1rem;
-    padding: 10px;
+    padding: 8px 16px;
     background-color: #007bff;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    white-space: nowrap; /* Förhindra att text bryts */
 }
 
 .patient-list button:hover {
     background-color: #0056b3;
+    transform: scale(1.05);
 }
 
 .patient-details {
@@ -56,36 +66,51 @@
 
 .patient-details h3 {
     color: #004085;
+    font-size: 1.5rem;
 }
 
 .actions {
     margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .actions button {
-    margin-right: 10px;
-    padding: 10px;
+    font-size: 0.9rem;
+    padding: 8px 16px;
     background-color: #28a745;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .actions button:hover {
     background-color: #218838;
+    transform: scale(1.05);
 }
 
 .messages-button {
     background-color: #17a2b8;
     border: none;
-    padding: 10px;
+    padding: 8px 16px;
     border-radius: 4px;
     color: white;
     cursor: pointer;
-    margin-right: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .messages-button:hover {
     background-color: #138496;
+    transform: scale(1.05);
+}
+
+/* För att säkerställa att knapparna inte tar upp för mycket utrymme */
+.patient-list button, 
+.actions button, 
+.messages-button {
+    max-width: 200px;
+    text-align: center;
 }

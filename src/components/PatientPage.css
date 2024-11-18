@@ -1,0 +1,83 @@
+.patient-page {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .patient-page h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .patient-page p {
+    text-align: center;
+    color: #666;
+  }
+  
+  .patient-info,
+  .patient-observations,
+  .patient-conditions {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .patient-info h2,
+  .patient-observations h2,
+  .patient-conditions h2 {
+    color: #007BFF;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #007BFF;
+    padding-bottom: 5px;
+  }
+  
+  .patient-info p,
+  .patient-observations p,
+  .patient-conditions p {
+    margin: 8px 0;
+    color: #333;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  ul li {
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #f4f4f4;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+  }
+  
+  ul li p {
+    margin: 5px 0;
+    color: #555;
+  }
+  
+  ul li p strong {
+    color: #333;
+  }
+  
+  .error-message {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .loading-message {
+    color: #333;
+    font-style: italic;
+    text-align: center;
+    margin-top: 20px;
+  }
+  

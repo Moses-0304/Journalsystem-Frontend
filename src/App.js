@@ -8,25 +8,31 @@ import PractitionerPage from './components/PractitionerPage'; // Import Practiti
 import CreateCondition from './components/CreateCondition'; // Import CreateCondition component
 import CreateObservation from './components/CreateObservation'; // Import CreateObservation component
 import MessagePage from './components/MessagePage'; // Import MessagePage component
+import PatientMessagePage from './components/PatientMessagePage'; // Import PatientMessagePage component
 
 function App() {
   return (
     <Router>
       <Routes>
-        {/* Öppna rutter */}
+        {/* Public Routes */}
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
-        {/* Sidor för olika användare */}
+        {/* Patient Routes */}
         <Route path="/patient" element={<PatientPage />} />
+        <Route path="/patient/messages" element={<PatientMessagePage />} />
+
+        {/* Doctor Routes */}
         <Route path="/doctor" element={<DoctorPage />} />
+
+        {/* Practitioner Routes */}
         <Route path="/practitioner" element={<PractitionerPage />} />
 
-        {/* Funktioner för att skapa condition och observation */}
+        {/* Shared Functionalities */}
         <Route path="/create-condition" element={<CreateCondition />} />
         <Route path="/create-observation" element={<CreateObservation />} />
 
-        {/* Sidan för meddelanden */}
+        {/* Generic Message Page */}
         <Route path="/messages" element={<MessagePage />} />
       </Routes>
     </Router>
