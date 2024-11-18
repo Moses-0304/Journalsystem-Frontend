@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // För navigering
 import api from '../services/api';
 import './Register.css';
 
@@ -13,6 +14,7 @@ const Register = () => {
   });
 
   const [message, setMessage] = useState('');
+  const navigate = useNavigate(); // Navigeringsfunktion
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -38,10 +40,15 @@ const Register = () => {
     try {
       await api.post('/users/register', formData);
       setMessage('Registration successful!');
+      setTimeout(() => navigate('/'), 2000); // Navigera tillbaka till login efter registrering
     } catch (error) {
       console.error('Error registering user:', error.response?.data || error.message); // Debug-logg
       setMessage(`Error: ${error.response?.data || 'Registration failed'}`);
     }
+  };
+
+  const handleBack = () => {
+    navigate('/'); // Navigera tillbaka till login-sidan
   };
 
   return (
@@ -124,6 +131,9 @@ const Register = () => {
           <button type="submit">Register</button>
         </form>
         {message && <p className="message">{message}</p>}
+        <button className="back-button" onClick={handleBack}>
+          Tillbaka
+        </button>
       </div>
     </div>
   );

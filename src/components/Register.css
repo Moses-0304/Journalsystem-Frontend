@@ -73,4 +73,19 @@
   .login-link:hover {
     text-decoration: underline;
   }
+
+  .back-button {
+    background-color: #6c757d; /* Neutral färg */
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 20px; /* Avstånd från formuläret */
+  }
+  
+  .back-button:hover {
+    background-color: #5a6268; /* Mörkare färg vid hover */
+  }
   

@@ -1,0 +1,52 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f8f9fa; /* Ljus bakgrundsfärg */
+    color: #343a40; /* Mörkare text för kontrast */
+    border-bottom: 1px solid #dee2e6; /* Tunn kant för separation */
+    height: 60px;
+    position: relative;
+}
+
+.header .back-button,
+.header .logout-button {
+    background-color: #6c757d; /* Neutral grå färg */
+    color: white;
+    border: none;
+    padding: 6px 10px; /* Kompakt storlek */
+    border-radius: 50%; /* Rund form för knappar */
+    cursor: pointer;
+    font-size: 16px; /* Standardstorlek för text */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px; /* Gör knappen cirkulär */
+    height: 40px; /* Samma som bredden */
+    transition: background-color 0.3s ease; /* Smooth hover-effekt */
+}
+
+.header .back-button {
+    position: absolute;
+    top: 10px;
+    left: 10px; /* Placera i vänster hörn */
+}
+
+.header .logout-button {
+    position: absolute;
+    top: 10px;
+    right: 10px; /* Placera i höger hörn */
+}
+
+.header .back-button:hover,
+.header .logout-button:hover {
+    background-color: #5a6268; /* Mörkare grå vid hover */
+}
+
+.header .title {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0 auto;
+    text-align: center;
+}

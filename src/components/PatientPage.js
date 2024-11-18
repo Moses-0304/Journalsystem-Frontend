@@ -20,7 +20,6 @@ const PatientPage = () => {
           return;
         }
 
-        // Steg 1: Hämta patientId genom användarnamn
         const userResponse = await api.get(`/users/username/${username}`);
         const userData = userResponse.data;
 
@@ -31,7 +30,6 @@ const PatientPage = () => {
 
         const patientId = userData.patientId;
 
-        // Steg 2: Hämta patientens information via patientId
         const patientResponse = await api.get(`/patients/${patientId}`);
         const patientData = patientResponse.data;
 
@@ -42,15 +40,13 @@ const PatientPage = () => {
           birthDate: patientData.birthDate,
         });
 
-        // Steg 3: Hämta patientens observationer
         const observationsResponse = await api.get(`/observations/patient/${patientId}`);
         setObservations(observationsResponse.data);
 
-        // Steg 4: Hämta patientens diagnoser
         const conditionsResponse = await api.get(`/conditions/patient/${patientId}`);
         setConditions(conditionsResponse.data);
 
-        setError(null); // Rensa eventuella tidigare fel
+        setError(null);
       } catch (error) {
         console.error('Failed to fetch patient data:', error);
         setError('Kunde inte hämta patientinformation. Kontrollera din anslutning.');
@@ -61,7 +57,7 @@ const PatientPage = () => {
   }, [username]);
 
   const goToMessages = () => {
-    navigate('/patient/messages'); // Navigera till PatientMessagePage
+    navigate('/patient/messages');
   };
 
   if (error) {
@@ -77,7 +73,6 @@ const PatientPage = () => {
       <h1>Välkommen, {patientInfo.name}</h1>
       <p>Här kan du se din journal och information kopplad till din vård.</p>
 
-      {/* Patientens grundinformation */}
       <div className="patient-info">
         <h2>Din Information</h2>
         <p><strong>Namn:</strong> {patientInfo.name}</p>
@@ -86,7 +81,6 @@ const PatientPage = () => {
         <p><strong>ID:</strong> {patientInfo.id}</p>
       </div>
 
-      {/* Patientens observationer */}
       <div className="patient-observations">
         <h2>Dina Observationer</h2>
         {observations.length === 0 ? (
@@ -103,7 +97,6 @@ const PatientPage = () => {
         )}
       </div>
 
-      {/* Patientens diagnoser */}
       <div className="patient-conditions">
         <h2>Dina Diagnoser</h2>
         {conditions.length === 0 ? (
@@ -113,7 +106,6 @@ const PatientPage = () => {
             {conditions.map((cond) => (
               <li key={cond.id}>
                 <p><strong>Diagnos:</strong> {cond.diagnosis}</p>
-                <p><strong>Allvarlighetsgrad:</strong> {cond.severity}</p>
                 <p><strong>Datum:</strong> {new Date(cond.diagnosisDate).toLocaleDateString()}</p>
               </li>
             ))}
@@ -121,7 +113,6 @@ const PatientPage = () => {
         )}
       </div>
 
-      {/* Meddelanden knapp */}
       <button className="message-button" onClick={goToMessages}>
         Gå till Meddelanden
       </button>

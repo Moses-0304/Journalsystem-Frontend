@@ -8,31 +8,30 @@ const CreateCondition = () => {
   const patientId = searchParams.get('patientId'); // Hämta patientId från URL
   const [formData, setFormData] = useState({
     diagnosis: '',
-    severity: '',
     patientId: patientId,
   });
   const [message, setMessage] = useState('');
-  const [userRole, setUserRole] = useState(localStorage.getItem('userRole')); // Lagra användarrollen
   const [error, setError] = useState(null);
+  const [conditions, setConditions] = useState([]); // Patientens diagnoser
+  const userRole = localStorage.getItem('userRole'); // Hämta användarroll från localStorage
 
-  // Hämta alla diagnoser om användaren är läkare
-  const [conditions, setConditions] = useState([]);
-  const fetchConditions = async () => {
-    try {
-      if (userRole === 'DOCTOR') {
-        const response = await api.get(`/conditions/patient/${patientId}`);
-        const sortedConditions = response.data.sort(
-          (a, b) => new Date(a.diagnosisDate) - new Date(b.diagnosisDate)
-        );
-        setConditions(sortedConditions);
-      }
-    } catch (error) {
-      console.error('Failed to fetch conditions:', error);
-      setError('Kunde inte hämta diagnoser.');
-    }
-  };
-
+  // Hämta diagnoser om användaren är läkare
   useEffect(() => {
+    const fetchConditions = async () => {
+      try {
+        if (userRole === 'DOCTOR') {
+          const response = await api.get(`/conditions/patient/${patientId}`);
+          const sortedConditions = response.data.sort(
+            (a, b) => new Date(a.diagnosisDate) - new Date(b.diagnosisDate)
+          );
+          setConditions(sortedConditions);
+        }
+      } catch (error) {
+        console.error('Failed to fetch conditions:', error);
+        setError('Kunde inte hämta diagnoser.');
+      }
+    };
+
     fetchConditions();
   }, [patientId, userRole]);
 
@@ -46,9 +45,9 @@ const CreateCondition = () => {
     try {
       const response = await api.post('/conditions', formData);
       setMessage('Diagnos skapad!');
-      setFormData({ ...formData, diagnosis: '', severity: '' });
+      setFormData({ ...formData, diagnosis: '' });
 
-      // Uppdatera listan om användaren är läkare
+      // Om användaren är läkare, uppdatera listan
       if (userRole === 'DOCTOR') {
         setConditions((prevConditions) => [
           ...prevConditions,
@@ -75,25 +74,11 @@ const CreateCondition = () => {
             required
           />
         </div>
-        <div>
-          <label>Allvarlighetsgrad:</label>
-          <select
-            name="severity"
-            value={formData.severity}
-            onChange={handleChange}
-            required
-          >
-            <option value="">Välj allvarlighetsgrad</option>
-            <option value="MILD">Mild</option>
-            <option value="MODERATE">Måttlig</option>
-            <option value="SEVERE">Allvarlig</option>
-          </select>
-        </div>
         <button type="submit">Skapa</button>
       </form>
       {message && <p className="message">{message}</p>}
 
-      {/* Visa endast diagnoser för läkare */}
+      {/* Visa diagnoser endast om användaren är läkare */}
       {userRole === 'DOCTOR' && (
         <>
           <h2>Patientens Diagnoser</h2>
@@ -105,7 +90,6 @@ const CreateCondition = () => {
               {conditions.map((condition) => (
                 <li key={condition.id}>
                   <p><strong>Diagnos:</strong> {condition.diagnosis}</p>
-                  <p><strong>Allvarlighetsgrad:</strong> {condition.severity}</p>
                   <p><strong>Datum:</strong> {new Date(condition.diagnosisDate).toLocaleDateString()}</p>
                 </li>
               ))}

@@ -1,42 +1,91 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Import Router, Routes, and Route
-import Login from './components/Login'; // Import Login component
-import Register from './components/Register'; // Import Register component
-import PatientPage from './components/PatientPage'; // Import PatientPage component
-import DoctorPage from './components/DoctorPage'; // Import DoctorPage component
-import PractitionerPage from './components/PractitionerPage'; // Import PractitionerPage component
-import CreateCondition from './components/CreateCondition'; // Import CreateCondition component
-import CreateObservation from './components/CreateObservation'; // Import CreateObservation component
-import MessagePage from './components/MessagePage'; // Import MessagePage component
-import PatientMessagePage from './components/PatientMessagePage'; // Import PatientMessagePage component
+import Header from './components/Header'; // Importera Header
+import Login from './components/Login'; // Importera Login
+import Register from './components/Register'; // Importera Register
+import PatientPage from './components/PatientPage'; // Importera PatientPage
+import DoctorPage from './components/DoctorPage'; // Importera DoctorPage
+import PractitionerPage from './components/PractitionerPage'; // Importera PractitionerPage
+import CreateCondition from './components/CreateCondition'; // Importera CreateCondition
+import CreateObservation from './components/CreateObservation'; // Importera CreateObservation
+import MessagePage from './components/MessagePage'; // Importera MessagePage
+import PatientMessagePage from './components/PatientMessagePage'; // Importera PatientMessagePage
 
-function App() {
+const App = () => {
   return (
     <Router>
       <Routes>
-        {/* Public Routes */}
+        {/* Öppna rutter */}
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
-        {/* Patient Routes */}
-        <Route path="/patient" element={<PatientPage />} />
-        <Route path="/patient/messages" element={<PatientMessagePage />} />
-
-        {/* Doctor Routes */}
-        <Route path="/doctor" element={<DoctorPage />} />
-
-        {/* Practitioner Routes */}
-        <Route path="/practitioner" element={<PractitionerPage />} />
-
-        {/* Shared Functionalities */}
-        <Route path="/create-condition" element={<CreateCondition />} />
-        <Route path="/create-observation" element={<CreateObservation />} />
-
-        {/* Generic Message Page */}
-        <Route path="/messages" element={<MessagePage />} />
+        {/* Sidor med Header */}
+        <Route
+          path="/patient"
+          element={
+            <>
+              <Header />
+              <PatientPage />
+            </>
+          }
+        />
+        <Route
+          path="/doctor"
+          element={
+            <>
+              <Header />
+              <DoctorPage />
+            </>
+          }
+        />
+        <Route
+          path="/practitioner"
+          element={
+            <>
+              <Header />
+              <PractitionerPage />
+            </>
+          }
+        />
+        <Route
+          path="/create-condition"
+          element={
+            <>
+              <Header />
+              <CreateCondition />
+            </>
+          }
+        />
+        <Route
+          path="/create-observation"
+          element={
+            <>
+              <Header />
+              <CreateObservation />
+            </>
+          }
+        />
+        <Route
+          path="/messages"
+          element={
+            <>
+              <Header />
+              <MessagePage />
+            </>
+          }
+        />
+        <Route
+          path="/patient/messages"
+          element={
+            <>
+              <Header />
+              <PatientMessagePage />
+            </>
+          }
+        />
       </Routes>
     </Router>
   );
-}
+};
 
 export default App;
